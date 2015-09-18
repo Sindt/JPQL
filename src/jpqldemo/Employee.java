@@ -28,6 +28,9 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "employees")
 @XmlRootElement
 @NamedQueries({
+    
+    @NamedQuery(name = "Employee.getEmployeeMaxCustomers", query = "SELECT Max(e.firstName) From Employee e WHERE e.customerList = e.customerList"),
+    @NamedQuery(name = "Employee.createEmployee", query = "SELECT Count(e.employeeNumber) From Employee e"),
     @NamedQuery(name = "Employee.findAll", query = "SELECT e FROM Employee e"),
     @NamedQuery(name = "Employee.findByEmployeeNumber", query = "SELECT e FROM Employee e WHERE e.employeeNumber = :employeeNumber"),
     @NamedQuery(name = "Employee.findByLastName", query = "SELECT e FROM Employee e WHERE e.lastName = :lastName"),

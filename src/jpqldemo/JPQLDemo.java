@@ -24,6 +24,16 @@ public class JPQLDemo {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPQLDemoPU");
         EntityManager em = emf.createEntityManager();
         
+        
+        Facade f = new Facade(emf);
+        
+        System.out.println(f.getCustomerInCity("Barcelona"));
+        
+        System.out.println(f.getEmployeeCount());
+        
+        System.out.println(f.getEmployeeMaxCustomers().get(0));
+        
+        
         Query q =  em.createNamedQuery("Customer.findByCity");
         q.setParameter("city", "NYC");
         List<Customer> customers = q.getResultList();
@@ -35,15 +45,6 @@ public class JPQLDemo {
         Customer cust = em.find(Customer.class, 103);
         System.out.println("Cust name =" + cust.getCustomerName());
         
-        
-//        Query myQuery = em.createNativeQuery("Select c From Customer c");
-//        customers = myQuery.getResultList();
-        
-//        for (Customer customer : customers) {
-//              System.out.println("Result =" + customer.getCustomerName());
-//        }
-      
-    
     }
     
 }
