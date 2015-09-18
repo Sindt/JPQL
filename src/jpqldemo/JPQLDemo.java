@@ -33,7 +33,7 @@ public class JPQLDemo {
         }
         
         Customer cust = em.find(Customer.class, 103);
-        System.out.println(cust.getCustomerName());
+        System.out.println("Cust name =" + cust.getCustomerName());
         
         
 //        Query myQuery = em.createNativeQuery("Select c From Customer c");
